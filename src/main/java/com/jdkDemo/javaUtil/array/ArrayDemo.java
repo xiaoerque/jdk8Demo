@@ -1,4 +1,6 @@
-package com.jdkDemo.javaUtil;
+package com.jdkDemo.javaUtil.array;
+
+import java.util.Random;
 
 /**
  * Array熟悉类
@@ -8,6 +10,8 @@ package com.jdkDemo.javaUtil;
  */
 public class ArrayDemo {
     public static void main(String[] args) {
-        System.out.println("输出一下Array");
+        int number[] = new int[6];
+
+        
     }
 }
