@@ -2,9 +2,6 @@ package com.jdkDemo.leetcode;
 
 import com.alibaba.fastjson.JSON;
 
-import java.lang.annotation.Target;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 数组题目
