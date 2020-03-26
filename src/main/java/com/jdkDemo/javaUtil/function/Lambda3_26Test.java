@@ -21,29 +21,30 @@ public class Lambda3_26Test {
         Lambda3_26Test test = new Lambda3_26Test();
         //test.varCanOptLambda();
 
-        List<Integer> lists = Arrays.asList(1,2,3,6,8,9);
-        List<Integer> result = test.getIntegerBig(5,lists);
-        System.out.println("json为:"+ JSON.toJSONString(result));
+        List<Integer> lists = Arrays.asList(1, 2, 3, 6, 8, 9);
+        List<Integer> result = test.getIntegerBig(5, lists);
+        System.out.println("json为:" + JSON.toJSONString(result));
 
     }
 
 
     /**
-    测试一下是否可以在lambda引入变量
-    */
-    private void varCanOptLambda(){
+     * 测试一下是否可以在lambda引入变量
+     */
+    private void varCanOptLambda() {
         Integer inVarI = 0;
-        List<Integer> lists = Arrays.asList(1,3,5,7,9);
-        lists.forEach(list->{
+        List<Integer> lists = Arrays.asList(1, 3, 5, 7, 9);
+        lists.forEach(list -> {
             varTestI++;
             //inVarI++; 这个变量就不可以! why
-            System.out.println("不输出集合:只输出变量i为"+varTestI);
+            System.out.println("不输出集合:只输出变量i为" + varTestI);
         });
     }
+
     /**
-    /**
-    测试一下bifunction
-    */
+     * /**
+     * 测试一下bifunction
+     */
 
     private List<Integer> getIntegerBig(int age, List<Integer> nums) {
         BiFunction<Integer, List<Integer>, List<Integer>> biFunction = (ageParams, numsParams) -> {
