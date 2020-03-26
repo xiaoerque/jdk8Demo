@@ -22,9 +22,13 @@ public class Lambda3_26Test {
         //test.varCanOptLambda();
 
         List<Integer> lists = Arrays.asList(1, 2, 3, 6, 8, 9);
-        List<Integer> result = test.getIntegerBig(5, lists);
-        System.out.println("json为:" + JSON.toJSONString(result));
+        //List<Integer> result = test.getIntegerBig(5, lists);
+        //System.out.println("json为:" + JSON.toJSONString(result));
 
+        List<Integer> result = test.getIntegerBig2(5,lists,(num,nums)->{
+            return nums.stream().filter(n->n<num).collect(Collectors.toList());
+        });
+        System.out.println("json为:" + JSON.toJSONString(result));
     }
 
 
@@ -42,7 +46,7 @@ public class Lambda3_26Test {
     }
 
     /**
-     * /**
+     *
      * 测试一下bifunction
      */
 
@@ -54,4 +58,13 @@ public class Lambda3_26Test {
         };
         return biFunction.apply(age, nums);
     }
+
+    /**
+     *
+     * bifunction的简易写法
+     */
+    private List<Integer> getIntegerBig2(int num,List<Integer> nums,BiFunction<Integer,List<Integer>,List<Integer>> biFunction){
+        return biFunction.apply(num,nums);
+    }
+
 }
