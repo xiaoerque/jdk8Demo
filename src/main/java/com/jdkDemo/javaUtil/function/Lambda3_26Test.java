@@ -49,6 +49,7 @@ public class Lambda3_26Test {
     private List<Integer> getIntegerBig(int age, List<Integer> nums) {
         BiFunction<Integer, List<Integer>, List<Integer>> biFunction = (ageParams, numsParams) -> {
             List<Integer> result = numsParams.stream().filter(numsParam -> numsParam > ageParams).collect(Collectors.toList());
+            //这个.filter就是根据ageParams对集合进行修改
             return result;
         };
         return biFunction.apply(age, nums);
