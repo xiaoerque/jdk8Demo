@@ -1,7 +1,11 @@
 package com.jdkDemo.javaUtil.function;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 
 /**
  * 3月26号测试
@@ -16,6 +20,10 @@ public class Lambda3_26Test {
     public static void main(String[] args) {
         Lambda3_26Test test = new Lambda3_26Test();
         //test.varCanOptLambda();
+
+        List<Integer> lists = Arrays.asList(1,2,3,6,8,9);
+        List<Integer> result = test.getIntegerBig(5,lists);
+        System.out.println("json为:"+ JSON.toJSONString(result));
 
     }
 
@@ -33,10 +41,15 @@ public class Lambda3_26Test {
         });
     }
     /**
+    /**
     测试一下bifunction
     */
 
-    private void testBiFunction(){
-
+    private List<Integer> getIntegerBig(int age, List<Integer> nums) {
+        BiFunction<Integer, List<Integer>, List<Integer>> biFunction = (ageParams, numsParams) -> {
+            List<Integer> result = numsParams.stream().filter(numsParam -> numsParam > ageParams).collect(Collectors.toList());
+            return result;
+        };
+        return biFunction.apply(age, nums);
     }
 }
