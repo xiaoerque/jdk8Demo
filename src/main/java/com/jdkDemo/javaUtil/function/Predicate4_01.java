@@ -1,5 +1,7 @@
 package com.jdkDemo.javaUtil.function;
 
+import com.jdkDemo.leetcode.LeedArrays;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -20,12 +22,57 @@ public class Predicate4_01 {
         predicate.conditionFilter(lists, test -> test > 5);
         predicate.conditionFilter(lists, test -> test % 2 == 0);
         predicate.conditionFilter(lists, test -> test % 2 != 0);
+
+        predicate.bothConditionFilter(lists, testFirst -> testFirst > 5, testEnd -> testEnd % 2 == 0);
+
+        predicate.negateConditionFilter(lists,test-> test > 5);
+
+        predicate.orConditionFilter(lists, test -> test > 5, testOther -> testOther < 5);
+
+        predicate.isEqualsConditionFilter(lists, test -> test < 5);
     }
 
     public void conditionFilter(List<Integer> lists, Predicate<Integer> predicate) {
         System.out.println("--------------------------");
         lists.forEach(list -> {
             if (predicate.test(list)) {
+                System.out.println(list);
+            }
+        });
+    }
+
+    public void bothConditionFilter(List<Integer> lists,Predicate<Integer> predicateFst,Predicate<Integer> predicateEnd){
+        System.out.println("-------------------------");
+        lists.forEach(list->{
+            if(predicateFst.and(predicateEnd).test(list)){
+                System.out.println(list);
+            }
+        });
+    }
+
+    public void negateConditionFilter(List<Integer> lists,Predicate<Integer> predicate){
+        System.out.println("-------------------------");
+        lists.forEach(list->{
+            if(predicate.negate().test(list)){
+                System.out.println(list);
+            }
+        });
+    }
+
+    public void orConditionFilter(List<Integer> lists,Predicate<Integer> predicate,Predicate<Integer> otherPredicate){
+        System.out.println("------------------------");
+        lists.forEach(list->{
+            if(predicate.or(otherPredicate).test(list)){
+                System.out.println(list);
+            }
+        });
+    }
+
+    public void isEqualsConditionFilter(List<Integer> lists,Predicate<Integer> predicate){
+        System.out.println("这里试一下isEquals------------------------");
+        //一个很申请的方法
+        lists.forEach(list->{
+            if(Predicate.isEqual(9).test(list)){
                 System.out.println(list);
             }
         });
