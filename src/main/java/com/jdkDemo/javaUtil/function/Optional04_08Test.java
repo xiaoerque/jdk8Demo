@@ -18,11 +18,14 @@ public class Optional04_08Test {
         MyStudent stu2 = new MyStudent("李四");
 
         MyClass cls = new MyClass();
-        cls.setMyStudents(Arrays.asList(stu1,stu2));
+        //cls.setMyStudents(Arrays.asList(stu1,stu2));
 
         Optional<MyClass> optCls = Optional.ofNullable(cls);
 
-
+        List<MyStudent> result = optCls.map(MyClass::getMyStudents).orElse(null);
+        if(null != result){
+            result.forEach(re-> System.out.println(re.getName()));
+        }
     }
 
 
