@@ -13,6 +13,9 @@ import java.util.Optional;
  * @create 2020-04-08-8:59
  */
 public class Optional04_08Test {
+
+    private static int intres = 0;
+
     public static void main(String[] args) {
         MyStudent stu1 = new MyStudent("张三") ;
         MyStudent stu2 = new MyStudent("李四");
@@ -26,6 +29,19 @@ public class Optional04_08Test {
         if(null != result){
             result.forEach(re-> System.out.println(re.getName()));
         }
+
+
+        Optional<String> optStr = Optional.of("testLove");
+        optStr.ifPresent(System.out::println);
+        optStr.ifPresent(strs->{
+            if(strs.equals("abc")){
+                intres = 1;
+            }else {
+                intres = -1;
+            }
+        });
+        System.out.println("输出一个:"+intres);
+
     }
 
 
