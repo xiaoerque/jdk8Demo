@@ -15,8 +15,8 @@ public class ForeachTest {
     }
 
     private static void testForeach(){
-        List<Integer> lists = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> lists = Arrays.asList(1,2,3,4,5,null,6);
         //再lambda表达式中, 映射(map)属于中间操作, forEach输出终止操作
-        lists.stream().filter(list->list>3).forEach(list-> System.out.println(list));
+        lists.stream().filter(list->list != null && list>3).forEach(list-> System.out.println(list));
     }
 }
