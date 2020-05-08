@@ -2,6 +2,7 @@ package com.jdkDemo.javaUtil.function;
 
 import com.jdkDemo.leetcode.LeedArrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -30,6 +31,9 @@ public class Predicate4_01 {
         predicate.orConditionFilter(lists, test -> test > 5, testOther -> testOther < 5);
 
         predicate.isEqualsConditionFilter(lists, test -> test < 5);
+
+        List<Integer> resultList = predicate.predicateList(lists,(test)-> test>5);
+        resultList.forEach(System.out::print);
     }
 
     public void conditionFilter(List<Integer> lists, Predicate<Integer> predicate) {
@@ -70,11 +74,22 @@ public class Predicate4_01 {
 
     public void isEqualsConditionFilter(List<Integer> lists,Predicate<Integer> predicate){
         System.out.println("这里试一下isEquals------------------------");
-        //一个很申请的方法
+        //一个很神奇的方法
         lists.forEach(list->{
             if(Predicate.isEqual(9).test(list)){
                 System.out.println(list);
             }
         });
+    }
+
+    public List<Integer> predicateList(List<Integer> lists, Predicate<Integer> predicate) {
+        System.out.println("-----------------集合经过断言获得新的集合-------------------");
+        List<Integer> resultList = new ArrayList<>();
+        lists.forEach(list -> {
+            if (predicate.test(list)) {
+                resultList.add(list);
+            }
+        });
+        return resultList;
     }
 }
