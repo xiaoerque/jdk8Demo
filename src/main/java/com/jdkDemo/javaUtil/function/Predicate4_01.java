@@ -46,7 +46,7 @@ public class Predicate4_01 {
     }
 
     public void bothConditionFilter(List<Integer> lists,Predicate<Integer> predicateFst,Predicate<Integer> predicateEnd){
-        System.out.println("-------------------------");
+        System.out.println("------------这个表示两个判断-------------");
         lists.forEach(list->{
             if(predicateFst.and(predicateEnd).test(list)){
                 System.out.println(list);
@@ -55,7 +55,7 @@ public class Predicate4_01 {
     }
 
     public void negateConditionFilter(List<Integer> lists,Predicate<Integer> predicate){
-        System.out.println("-------------------------");
+        System.out.println("------------这个表示相反-------------");
         lists.forEach(list->{
             if(predicate.negate().test(list)){
                 System.out.println(list);
@@ -64,7 +64,7 @@ public class Predicate4_01 {
     }
 
     public void orConditionFilter(List<Integer> lists,Predicate<Integer> predicate,Predicate<Integer> otherPredicate){
-        System.out.println("------------------------");
+        System.out.println("------------这个表示或者------------");
         lists.forEach(list->{
             if(predicate.or(otherPredicate).test(list)){
                 System.out.println(list);
